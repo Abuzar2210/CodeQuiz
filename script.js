@@ -76,4 +76,36 @@ let quiz =[
     }
 ]
 
+ //time function
+
+ function startTime(){
+     timeElement.setAttribute("style","display:block;");
+     answers.setAttribute("style","display:block;");
+     question.setAttribute("style","display:block;");
+     initials.setAttribute("style","display:none;");
+     gameScore.setAttribute("style","display:none;");
+     finished.setAttribute("style","display:none;");
+
+     secondsLeft=90;
+     whichQuestion=0;
+     startButton.disabled= true;
+     showQuiz();
+
+     timer = setInterval(function(){
+         secondsLeft--;
+         timeElement.textContent = secondsLeft + "remaining time left until Game Ends";
+         
+         if(secondsLeft <=0 || whichQuestion === quiz.length){
+             clearInterval(timer);
+             sendMessage();
+             saveInitial();
+             finished.setAttribute("style", "display:block")
+             return;
+         }
+     }, 1000);
+ }
+
+ function sendMessage(){
+     finished.textContent = "Game Finished";
+ }
 
