@@ -147,4 +147,26 @@ let quiz =[
          showQuiz();
      }
  }
- 
+
+ function saveInitial(){
+     startButton.disabled = false;
+
+     timeElement.setAttribute("style","display:none;");
+     answers.setAttribute("style","display:none;");
+     question.setAttribute("style","display:none;");
+     initials.setAttribute("style","display:block;");
+
+     initials.textContent = "Please type in your Initials here";
+
+     var userInitial = document.createElement("input");
+     userInitial.setAttribute("class", "input");
+     userInitial.setAttribute("type", "text");
+
+     var submitButton = document.createElement("input");
+     submitButton.setAttribute("type", "button");
+     submitButton.setAttribute("value", "submit");
+
+     initials.append(userInitial);
+     initials.append(submitButton);
+     
+ }
