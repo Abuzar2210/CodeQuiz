@@ -1,0 +1,49 @@
+h1{
+    color: black;
+    text-align: center;
+    background-color: #7EBC89;
+}
+
+h2{
+    text-align: center;
+    color: black;
+    background-color: #7EBC89;
+}
+.btn{
+    display: flex;
+    justify-content: center;
+}
+
+#quiz-container{
+    display: flex;
+    flex-direction: column;
+    column-gap: 10px;
+    align-items: center;
+    position: relative;
+    margin: auto;
+
+}
+
+#question{
+    font-size: large;
+    font-weight: bold;
+    background-color: white;
+    border-radius: 20px;
+    width: fit-content;
+    height: fit-content;
+    padding: 15px;
+    margin: 10px;
+}
+
+#options{
+    width: fit-content;
+    height: fit-content;
+    padding: auto;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.game-score{
+    color: blue;
+    font-size: 20px;
+}
