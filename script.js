@@ -26,7 +26,7 @@ let quiz =[
             b: ".java",
             c: ".script",
             d: ".css",
-        correctAnswers: a,
+            correctAnswers: "a"
         },
         
     },
@@ -37,7 +37,7 @@ let quiz =[
             b: "Functions",
             c: "Element Names",
             d: "Key Value Pairs",
-        correctAnswers: d,
+            correctAnswers: "d"
         },
         
     },
@@ -48,7 +48,7 @@ let quiz =[
             b: "List",
             c: "All",
             d: "None of the above",
-        correctAnswers: b,
+            correctAnswers: "b"
         },
         
     },
@@ -59,7 +59,7 @@ let quiz =[
             b: "removeLast()",
             c: "pop()",
             d: "last()",
-        correctAnswers: a,
+            correctAnswers: "a"
         },
         
     },
@@ -70,7 +70,7 @@ let quiz =[
             b: "RandomAccess",
             c: "Cloneable",
             d: "All of the above",
-        correctAnswers: d,
+            correctAnswers: "d"
         },
         
     }
@@ -109,3 +109,42 @@ let quiz =[
      finished.textContent = "Game Finished";
  }
 
+ // questions fucntion
+
+ function showQuiz(){
+     question.textContent = quiz[whichQuestion].question; answers.textContent = "";
+
+     for( let i = 0; i < quiz[whichQuestion].answers.length; i++){
+         var newButton = document.createElement("button");
+         newButton.textContent = quiz[whichQuestion].answers[i];
+         newButton.setAttribute("data-id, i");
+         newButton.addEventListener("click", evaluateAnswer);
+         newButton.style.display = "block";
+         answers.append(newButton);
+     }
+     return;
+ }
+
+ function evaluateAnswer(event){
+     event.stopPropagation();
+     console.log(event.target.textContent)
+     console.log(quiz[whichQuestion].answer)
+     if(event.target.textContent !== quiz[whichQuestion].answer){
+         secondsLeft = secondsLeft -10;
+         answers.style.backgroundColor = "red"
+     }   else{
+         score++; answers.style.backgroundColor = "green";
+     }
+     question.textContent = "";
+
+     if(whichQuestion === quiz.length-1){
+         saveInitial();
+         clearInterval(timer);
+         sendMessage();
+         finished.setAttribute("style", "display:block")
+     } else{
+         whichQuestion++;
+         showQuiz();
+     }
+ }
+ 
